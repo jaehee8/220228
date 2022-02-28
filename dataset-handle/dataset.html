@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+    <!-- 
+      ? data- 라는 사용자가 직접 만들어 사용하는 "속성노드(attribute node)"를 활용하면 '쉽게 구분할 수 있다.'
+      ? data- <-- 하이픈 뒤에 내가 직접 작명할수 있다.
+      ? data- <-- 속성의 객체 이름음 dataSet 이다.
+    -->
+    <ul>
+      <li data-test="0">item-1</li>
+      <li data-test="1">item-2</li>
+      <li data-test="2">item-3</li>
+      <li data-test="3">item-4</li>
+      <li data-test="4">item-5</li>
+      <li data-test="5">item-6</li>
+      <li data-test="6">item-7</li>
+      <li data-test="7">item-8</li>
+      <li data-test="8">item-9</li>
+      <li data-test="9">item-10</li>
+      <li data-test="10">item-11</li>
+      <li data-test="11">item-12</li>
+    </ul>
+  </div>
+  <script>
+    const selectWrap = document.querySelector('#container > ul');
+    selectWrap.addEventListener('click', (event) => {
+      console.dir(event.target);
+      // li를 선택한 접근 selectWrap.children.length
+      for(let i=0; i<selectWrap.children.length; i++) {
+        selectWrap.children[i].style.color = "skyblue";
+      }
+
+      let findItem = event.target.dataset.test; 
+      //data-test 값을 마치 index 처럼 설정해놨다.
+      console.log("data-test 값 :" +findItem);
+      selectWrap.children[findItem].style.color = "blue";
+      // li 접근할때 index 처럼 사용했으니까 --> 변수를 넣어버림
+    });
+  </script>
+</body>
+</html>
